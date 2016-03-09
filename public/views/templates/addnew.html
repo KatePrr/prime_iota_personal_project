@@ -1,0 +1,52 @@
+<div class="row">
+    <h2>Add New</h2>
+</div>
+
+<div class="row">
+    <form id="new-stand">
+        <div class="col-md-6 text-right">
+
+            <label for="vendor_name">Vendor Name: </label>
+            <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name" />
+
+            <label for="farm_name">Farm Name: </label>
+            <input type="text" placeholder="Farm..." ng-model="farm_name" id="farm_name" />
+
+            <label for="location">Location: </label>
+            <input type="text" placeholder="Address..." ng-model="location" id="location" />
+
+        </div>
+        <div class="col-md-6 text-right">
+
+            <label for="last_seen">Last Spotted: </label>
+            <input type="text" placeholder="Last Spotted..." ng-model="last_seen" id="last_seen" />
+
+            <label for="products">Produce: </label>
+            <input type="text" placeholder="Produce..." ng-model="products" id="products" />
+
+            <label for="payment">Payment Accepted: </label>
+            <input type="text" placeholder="Payment options..." ng-model="payment" id="payment" />
+
+        </div>
+        <div class="col-md-6 text-right">
+
+            <label for="website">Website: </label>
+            <input type="text" placeholder="Url..." ng-model="website" id="website" />
+
+            <label for="association">Associations: </label>
+            <input type="text" placeholder="Associations..." ng-model="association" id="association" />
+
+            <label for="phone">Phone: </label>
+            <input type="text" placeholder="Phone..." ng-model="phone" id="phone" />
+        </div>
+        <div class="col-md-6 text-right">
+            <label for="description">Description: </label>
+            <input type="text" placeholder="About..." ng-model="description" id="description" />
+        </div>
+
+        <button ng-click="submitNew()" id="submit-button" >Submit</button>
+        <button ng-click="cancelNew()" id="cancel-button" >Cancel</button>
+    </form>
+
+
+</div>
