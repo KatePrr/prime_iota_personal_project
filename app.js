@@ -7,10 +7,64 @@ var Schema = mongoose.Schema;
 //// passport google authentication
 //var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+mongoose.connect('mongodb://localhost/iota_personal_project');
+mongoose.model(
+    'Vendor_Entry',
+    new Schema({
+        "vendor_name": String,
+        "farm_name": String,
+        "location": String,
+        "last_seen": Date,
+        "products": String,
+        "payment": String,
+        "url": String,
+        "certification": String,
+        "phone": String,
+        "description": String
+    },
+        {
+            collection: 'vendors'
+        }
+
+    ));
+
+var Vendor_Entry =  mongoose.model('Vendor_Entry');
+
+app.post('/vendor', function(req, res) {
+    //console.log(req.body);
+    var newVendor = new Vendor_Entry({
+        "vendor_name": req.body.vendor_name,
+        "farm_name": req.body.farm_name,
+        "location": req.body.location,
+        "last_seen": req.body.last_seen,
+        "products": req.body.products,
+        "payment": req.body.payment,
+        "url": req.body.url,
+        "certification": req.body.certification,
+        "phone": req.body.phone,
+        "description": req.body.description
+    });
+
+    newVendor.save(function(err, data) {
+        if(err) {
+            console.log('ERR: ', err);
+        }
+        Vendor_Entry.find({}, function(err, data) {
+            if(err) {
+                console.log('ERR: ', err);
+            }
+            res.send(data);
+        });
+    });
+});
+
+
+
+
+
 
 // Serve back static files
 app.use(express.static('public'));

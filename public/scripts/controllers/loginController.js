@@ -1,4 +1,6 @@
 myApp.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+// Testing
+    console.log('LoginController');
 
     $scope.onSignIn = function(googleUser) {
         var profile = googleUser.getBasicProfile();

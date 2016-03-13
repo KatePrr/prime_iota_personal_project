@@ -3,8 +3,8 @@
 </div>
 
 <div class="row">
-    <form id="new-stand">
-        <div class="col-md-6 text-right">
+    <form name="newStand">
+        <div class="col-md-6">
 
             <label for="vendor_name">Vendor Name: </label>
             <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name" />
@@ -15,37 +15,46 @@
             <label for="location">Location: </label>
             <input type="text" placeholder="Address..." ng-model="location" id="location" />
 
-        </div>
-        <div class="col-md-6 text-right">
 
             <label for="last_seen">Last Spotted: </label>
-            <input type="text" placeholder="Last Spotted..." ng-model="last_seen" id="last_seen" />
-
-            <label for="products">Produce: </label>
-            <input type="text" placeholder="Produce..." ng-model="products" id="products" />
-
-            <label for="payment">Payment Accepted: </label>
-            <input type="text" placeholder="Payment options..." ng-model="payment" id="payment" />
-
-        </div>
-        <div class="col-md-6 text-right">
+            <input type="date" placeholder="Last Spotted..." ng-model="last_seen" id="last_seen" />
 
             <label for="website">Website: </label>
             <input type="text" placeholder="Url..." ng-model="website" id="website" />
 
-            <label for="association">Associations: </label>
-            <input type="text" placeholder="Associations..." ng-model="association" id="association" />
+            <label for="certification"></label>
+            <input type="checkbox" ng-model="certification" id="certification" />
 
             <label for="phone">Phone: </label>
             <input type="text" placeholder="Phone..." ng-model="phone" id="phone" />
-        </div>
-        <div class="col-md-6 text-right">
+
             <label for="description">Description: </label>
             <input type="text" placeholder="About..." ng-model="description" id="description" />
+
+            <!--PRODUCT OPTIONS-->
+            <div id="productList">
+                <h4>Items</h4>
+                <label ng-repeat="item in produceTypes">
+                    <input type="checkbox" checklist-model="selectedProducts.type" checklist-value="item.id" />
+                    {{item.label}}
+                </label>
+                <!--TESTING-->
+                {{selectedProducts.type}}
+            </div>
+            <!--PAYMENT CHECKBOXES-->
+            <div id="paymentChecklist">
+                <h4>Payment Options</h4>
+                <label ng-repeat="method in paymentTypes">
+                    <input type="checkbox" checklist-model="selectedPayment.type" checklist-value="method.payment" />
+                    {{method.label}}
+                </label>
+                <!--FOR TESTING:-->
+                {{selectedPayment.type}}
+            </div>
         </div>
 
-        <button ng-click="submitNew()" id="submit-button" >Submit</button>
-        <button ng-click="cancelNew()" id="cancel-button" >Cancel</button>
+        <button class="btn btn-default" ng-click="submitNew()" id="submit-button" >Submit</button>
+        <button class="btn btn-default" ng-click="reset()" id="cancel-button" >Cancel</button>
     </form>
 
 

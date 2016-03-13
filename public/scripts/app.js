@@ -1,10 +1,11 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'checklist-model']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
         .when('/home', {
-            templateUrl: '/views/templates/home.html'
+            templateUrl: '/views/templates/home.html',
+            controller: 'SearchController'
         })
         .when('/login', {
             templateUrl: '/views/templates/login.html',
@@ -14,7 +15,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/mapview.html'
         })
         .when('/addnew', {
-            templateUrl: '/views/templates/addnew.html'
+            templateUrl: '/views/templates/addnew.html',
+            controller: 'AddNewController'
         })
         .when('/favorites', {
             templateUrl: '/views/templates/favorites.html'
