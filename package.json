@@ -16,6 +16,7 @@
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "mongoose": "^4.4.6",
+    "ng-toast": "^2.0.0",
     "passport-google-oauth20": "^1.0.0"
   }
 }

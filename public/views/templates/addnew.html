@@ -4,10 +4,10 @@
 
 <div class="row">
     <form name="newStand">
-        <div class="col-md-6">
+        <div>
 
             <label for="vendor_name">Vendor Name: </label>
-            <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name" />
+            <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name"/>
 
             <label for="farm_name">Farm Name: </label>
             <input type="text" placeholder="Farm..." ng-model="farm_name" id="farm_name" />
@@ -15,18 +15,26 @@
             <label for="location">Location: </label>
             <input type="text" placeholder="Address..." ng-model="location" id="location" />
 
+            <label for="city">City: </label>
+            <input type="text" placeholder="City..." ng-model="city" id="city" required />
+
+            <label for="state">State: </label>
+            <input type="text" placeholder="State..." ng-model="state" id="state" required />
+
+            <label for="zip">Zip: </label>
+            <input type="number" placeholder="Zip..." ng-model="zip" id="zip" required />
 
             <label for="last_seen">Last Spotted: </label>
             <input type="date" placeholder="Last Spotted..." ng-model="last_seen" id="last_seen" />
 
             <label for="website">Website: </label>
-            <input type="text" placeholder="Url..." ng-model="website" id="website" />
+            <input type="text" placeholder="www.website.com" ng-model="website" id="website" />
 
             <label for="certification"></label>
-            <input type="checkbox" ng-model="certification" id="certification" />
+            <input type="text" ng-model="certification" id="certification" />
 
             <label for="phone">Phone: </label>
-            <input type="text" placeholder="Phone..." ng-model="phone" id="phone" />
+            <input type="text" placeholder="(xxx)xxx-xxxx" ng-model="phone" id="phone" />
 
             <label for="description">Description: </label>
             <input type="text" placeholder="About..." ng-model="description" id="description" />
@@ -53,9 +61,11 @@
             </div>
         </div>
 
-        <button class="btn btn-default" ng-click="submitNew()" id="submit-button" >Submit</button>
+        <button class="btn btn-default" ng-click="newStand.$invalid ? alert('Please complete required fields') : submitNew()" id="submit-button" >Submit</button>
         <button class="btn btn-default" ng-click="reset()" id="cancel-button" >Cancel</button>
     </form>
+
+    <!--<toast></toast>-->
 
 
 </div>

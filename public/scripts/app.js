@@ -18,9 +18,14 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/addnew.html',
             controller: 'AddNewController'
         })
+        //.when('/', {
+        //    templateUrl: '/views/templates/login.html',
+        //    controller: 'LogInController'
+        //})
         .when('/favorites', {
             templateUrl: '/views/templates/favorites.html'
         })
+
         .otherwise({
             redirectTo: 'home'
         });

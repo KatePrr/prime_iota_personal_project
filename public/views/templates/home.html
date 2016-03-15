@@ -2,3 +2,38 @@
     <h1>Find a Farm Stand</h1>
     <p>Add more text here to talk about how awesome this is.</p>
 </div>
+
+<div class="row">
+    <form>
+
+    <label for="searchBox">Name, zip, or product: </label>
+    <input type="text" id="searchBox" ng-model="searchBox" placeholder="search" />
+
+    <!--<select -->
+            <!--ng-model="searchBy" ng-options="find as find.label for find in searchTypes track by find.type">-->
+    <!--</select>-->
+    <button class="btn btn-default" ng-click="search()" id="searchButton">Find</button>
+
+    </form>
+</div>
+
+
+
+<div class="results">
+    <h2>Search Results</h2>
+    <ul>
+        <li ng-repeat="vendor in databaseResults" >
+            {{vendor.vendor_name}}
+            {{vendor.location}}
+            {{vendor.last_seen | date}}
+            {{vendor.products}}
+        </li>
+    </ul>
+
+    <ul>
+        <li ng-repeat="market in apiResults">
+            {{market.marketname}}
+        </li>
+    </ul>
+
+</div>

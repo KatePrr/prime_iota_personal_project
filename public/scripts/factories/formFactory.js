@@ -1,10 +1,5 @@
-myApp.controller('AddNewController', ['$scope', 'DataFactory', 'FormFactory', function($scope, DataFactory, FormFactory) {
-    // TESTING
-    console.log('AddNewController');
+myApp.factory('FormFactory', ['$http', function($http) {
 
-    // bring in factories
-    $scope.dataFactory = DataFactory;
-    $scope.formFactory = FormFactory;
 
     //initialize array of objects
     $scope.paymentTypes = [
@@ -79,54 +74,14 @@ myApp.controller('AddNewController', ['$scope', 'DataFactory', 'FormFactory', fu
         type: []
     };
 
-    // collect form data
-    $scope.submitNew = function () {
 
-        var newVendor = {
-            vendor_name: $scope.vendor_name,
-            farm_name: $scope.farm_name,
-            location: $scope.location,
-            city: $scope.city,
-            state: $scope.state,
-            zip: $scope.zip,
-            last_seen: $scope.last_seen,
-            products: $scope.selectedProducts.type,
-            payment: $scope.selectedPayment.type,
-            website: $scope.website,
-            certification: $scope.certification,
-            phone: $scope.phone,
-            description: $scope.description
-        };
-        console.log(newVendor);
-        $scope.dataFactory.factorySaveNew(newVendor);
-        newSuccess();
-        $scope.reset();
 
-    };
 
-    $scope.reset = function () {
-        $scope.vendor_name = null;
-        $scope.farm_name = null;
-        $scope.location = null;
-        $scope.city = null;
-        $scope.state = null;
-        $scope.zip = null;
-        $scope.last_seen = null;
-        $scope.selectedProducts.type = null;
-        $scope.selectedPayment.type = null;
-        $scope.website = null;
-        $scope.certification = null;
-        $scope.phone = null;
-        $scope.description = null;
-    };
 
-// CHANGE TO ANGULAR $WINDOW.ALERT FUNCTION OR alertsManager
-    var newSuccess = function () {
-        alert('The new listing has been submitted for review by the admin and will be added shortly. Thank you!');
-        //toast:
-        //ngToast.open({
-        //    template: '<div>Default Toast</div>'
-    };
+
+
+
+
 
 
 }]);

@@ -1,6 +1,19 @@
-myApp.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+myApp.controller('LoginController', ['$scope', '$http', '$location', function($scope, $location, $http) {
 // Testing
     console.log('LoginController');
+    //
+    //$scope.submit = function() {
+    //    var uname = $scope.username;
+    //    var password = $scope.password;
+    //    if($scope.username == 'admin' && $scope.password == 'admin') {
+    //        $location.path('/favorites');
+    //    }
+    //};
+
+
+
+
+
 
     $scope.onSignIn = function(googleUser) {
         var profile = googleUser.getBasicProfile();

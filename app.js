@@ -17,6 +17,9 @@ mongoose.model(
         "vendor_name": String,
         "farm_name": String,
         "location": String,
+        "city": String,
+        "state": String,
+        "zip": Number,
         "last_seen": Date,
         "products": String,
         "payment": String,
@@ -39,6 +42,9 @@ app.post('/vendor', function(req, res) {
         "vendor_name": req.body.vendor_name,
         "farm_name": req.body.farm_name,
         "location": req.body.location,
+        "city": req.body.city,
+        "state": req.body.state,
+        "zip": req.body.zip,
         "last_seen": req.body.last_seen,
         "products": req.body.products,
         "payment": req.body.payment,
@@ -62,6 +68,17 @@ app.post('/vendor', function(req, res) {
 });
 
 
+app.get('/vendor/:searchCriteria', function(req, res) {
+    console.log('here');
+    Vendor_Entry.find({zip: req.params.searchCriteria}, function(err, data) {
+        if(err) {
+            console.log('ERR: ', err);
+        }
+
+        res.send(data);
+        console.log(data);
+    });
+});
 
 
 

@@ -1,39 +1,21 @@
 myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory) {
+// TESTING
     console.log('SearchController');
-
-    // bring in datafactory
+// bring in datafactory
     $scope.dataFactory = DataFactory;
 
-    // ng-model :: setting value of search to whatever
-    $scope.storeFarm = function() {
-        var farmType = $scope.farm;
-        console.log(farmType);
-        marketFinder(farmType);
+
+//button from home.html call function search():
+    $scope.search = function() {
+        var searchCriteria = $scope.searchBox;
+        console.log('searchController: ', searchCriteria);
+        // search
+       searchCriteria = parseInt(searchCriteria);
+       $scope.dataFactory.factoryRetrieveData(searchCriteria).then(function() {
+           $scope.apiResults = $scope.dataFactory.factoryExportApiSearchResults();
+           $scope.databaseResults = $scope.dataFactory.factoryExportDBSearchResults();
+       });
     };
-
-    // add:: ng-hide until $scope.farm = true;
-    function marketFinder(farmType) {
-        // API KEY
-        var key =
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
