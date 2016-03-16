@@ -6,7 +6,7 @@
 <div class="row">
     <form>
 
-    <label for="searchBox">Name, zip, or product: </label>
+    <label for="searchBox">What's your zip code? </label>
     <input type="text" id="searchBox" ng-model="searchBox" placeholder="search" />
 
     <!--<select -->
@@ -18,22 +18,25 @@
 </div>
 
 
-
 <div class="results">
-    <h2>Search Results</h2>
-    <ul>
-        <li ng-repeat="vendor in databaseResults" >
-            {{vendor.vendor_name}}
-            {{vendor.location}}
-            {{vendor.last_seen | date}}
-            {{vendor.products}}
-        </li>
-    </ul>
 
-    <ul>
-        <li ng-repeat="market in apiResults">
-            {{market.marketname}}
-        </li>
-    </ul>
+<uib-accordion close-others="oneAtATime">
+    <uib-accordion-group heading="{{vendor.vendor_name}}" ng-repeat="vendor in databaseResults">
+        <p>{{vendor.location}}</p>
+        <button type="button" class="btn btn-default btn-sm" ng-click="mapView()">Map</button>
+        <p>{{vendor.farm_name}}</p>
+        <p>{{vendor.last_seen | date}}</p>
+        <p>{{vendor.products}}</p>
+        <p>{{vendor.description}}</p>
+    </uib-accordion-group>
+</uib-accordion>
+
+<uib-accordion close-others="oneAtATime">
+    <uib-accordion-group heading="{{market.marketname}}" ng-repeat="market in apiResults">
+        <p>More Info with better api query</p>
+    </uib-accordion-group>
+</uib-accordion>
+
+
 
 </div>

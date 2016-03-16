@@ -30,8 +30,8 @@
             <label for="website">Website: </label>
             <input type="text" placeholder="www.website.com" ng-model="website" id="website" />
 
-            <label for="certification"></label>
-            <input type="text" ng-model="certification" id="certification" />
+            <label for="certification">Certification</label>
+            <input type="text" ng-model="certification"placeholder="Conventional, organic, sustainable" id="certification" />
 
             <label for="phone">Phone: </label>
             <input type="text" placeholder="(xxx)xxx-xxxx" ng-model="phone" id="phone" />
@@ -65,7 +65,6 @@
         <button class="btn btn-default" ng-click="reset()" id="cancel-button" >Cancel</button>
     </form>
 
-    <!--<toast></toast>-->
-
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
 
 </div>

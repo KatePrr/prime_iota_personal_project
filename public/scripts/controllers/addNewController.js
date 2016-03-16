@@ -1,10 +1,10 @@
-myApp.controller('AddNewController', ['$scope', 'DataFactory', 'FormFactory', function($scope, DataFactory, FormFactory) {
+myApp.controller('AddNewController', ['$scope', 'DataFactory', function($scope, DataFactory) {
     // TESTING
     console.log('AddNewController');
 
     // bring in factories
     $scope.dataFactory = DataFactory;
-    $scope.formFactory = FormFactory;
+    //$scope.formFactory = FormFactory;
 
     //initialize array of objects
     $scope.paymentTypes = [
@@ -120,13 +120,32 @@ myApp.controller('AddNewController', ['$scope', 'DataFactory', 'FormFactory', fu
         $scope.description = null;
     };
 
+
 // CHANGE TO ANGULAR $WINDOW.ALERT FUNCTION OR alertsManager
+    $scope.alerts = [];
+
     var newSuccess = function () {
-        alert('The new listing has been submitted for review by the admin and will be added shortly. Thank you!');
-        //toast:
-        //ngToast.open({
-        //    template: '<div>Default Toast</div>'
+       $scope.alerts.push({msg: 'Your listing has been submitted and will be added shortly. Thank you!'});
+    };
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
     };
 
 
+
+
+
+
+
+
+
+
+
+
 }]);
+
+
+
+
+
+

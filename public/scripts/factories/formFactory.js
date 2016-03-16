@@ -2,7 +2,7 @@ myApp.factory('FormFactory', ['$http', function($http) {
 
 
     //initialize array of objects
-    $scope.paymentTypes = [
+    paymentTypes = [
         {payment: 'cash', label: 'Cash'},
         {payment: 'credit_card', label: 'Credit Card'},
         {payment: 'snap_ebt', label: 'Supplemental Nutrition Assistance Program (SNAP)'},
@@ -11,11 +11,11 @@ myApp.factory('FormFactory', ['$http', function($http) {
         {payment: 'sfmnp', label: 'Senior Farmers Markets Nutrition Program (FMNP)'}
     ];
     // create blank array to store selected payment types.
-    $scope.selectedPayment = {
+   selectedPayment = {
         type: []
     };
     // produce array of objects
-    $scope.produceTypes = [
+    produceTypes = [
         {id: 'apples', label: 'Apples'},
         {id: 'apple_cider', label: 'Apple Cider'},
         {id: 'asparagus', label: 'Asparagus'},
@@ -70,7 +70,7 @@ myApp.factory('FormFactory', ['$http', function($http) {
 
     ];
 // create blank array to store selected product types.
-    $scope.selectedProducts = {
+  selectedProducts = {
         type: []
     };
 

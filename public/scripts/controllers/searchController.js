@@ -15,12 +15,25 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
            $scope.apiResults = $scope.dataFactory.factoryExportApiSearchResults();
            $scope.databaseResults = $scope.dataFactory.factoryExportDBSearchResults();
        });
+        // clear searchBox
+        $scope.searchBox = null;
     };
 
+// collapsable menu
 
 
 
 
+    $scope.mapView = function(){
+        console.log('View the map function called!');
+    };
+//////////////// UI.BOOTSTRAP ACCORDION
+    $scope.oneAtATime = true;
+
+    $scope.status = {
+        isFirstOpen: true,
+        isFirstDisabled: false
+    };
 
 
 }]);
