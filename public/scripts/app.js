@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'checklist-model', 'ui.bootstrap', 'ngAnimate', 'ngTouch']);
+var myApp = angular.module('myApp', ['ngRoute', 'checklist-model', 'ui.bootstrap', 'ngAnimate', 'ngTouch', 'angular.filter']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
 
@@ -30,3 +30,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             redirectTo: 'home'
         });
 }]);
+
+
+// my app config(function(uiGmapGoogleMapApiProvider

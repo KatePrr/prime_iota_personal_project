@@ -1,6 +1,6 @@
 <div class="jumbotron">
-    <h1>Find a Farm Stand</h1>
-    <p>Add more text here to talk about how awesome this is.</p>
+    <h1>Farm Stand</h1>
+    <p>Fresh foods are waiting for you.</p>
 </div>
 
 <div class="row">
@@ -19,24 +19,40 @@
 
 
 <div class="results">
+    <!--DO:: ADD NG-SHOW RESULTS TITLE-->
+    <h2 ng-show=""></h2>
+
 
 <uib-accordion close-others="oneAtATime">
-    <uib-accordion-group heading="{{vendor.vendor_name}}" ng-repeat="vendor in databaseResults">
-        <p>{{vendor.location}}</p>
-        <button type="button" class="btn btn-default btn-sm" ng-click="mapView()">Map</button>
-        <p>{{vendor.farm_name}}</p>
+    <uib-accordion-group heading="{{vendor.vendor_name | ucfirst}}" ng-repeat="vendor in databaseResults" >
+        <p>{{vendor.location | ucfirst }}</p>
+        <p>{{vendor.farm_name | ucfirst }}</p>
         <p>{{vendor.last_seen | date}}</p>
-        <p>{{vendor.products}}</p>
-        <p>{{vendor.description}}</p>
+
+        <!--DO:: BREAK UP STRING!-->
+        <p>{{vendor.products }}</p>
+
+        <p>{{vendor.description }}</p>
+        <button type="button" class="btn btn-default btn-sm" value="{{vendor.zip}}" ng-click="mapView( (vendor.location),(vendor.state),(vendor.zip) )">Map</button>
     </uib-accordion-group>
 </uib-accordion>
 
+    <!--DO:: ADD NG-SHOW RESULTS MARKET TITLE-->
 <uib-accordion close-others="oneAtATime">
-    <uib-accordion-group heading="{{market.marketname}}" ng-repeat="market in apiResults">
-        <p>More Info with better api query</p>
+    <uib-accordion-group heading="{{cleanVendor(market.marketname)}}" ng-repeat="market in apiResults" ng-click="getDetails()" >
+        <div ng-repeat="detail in detailsArray">
+            <p>{{detail.Address}}</p>
+            <p>{{detail.Schedule | stripTags }}</p>
+
+            <!--DO:: FILTER FOR ; HERE-->
+            <p>{{detail.Products}}</p>
+
+            <button type="button" class="btn btn-default btn-sm" value="{{detail.GoogleLink}}" ng-click="apiMapView(detail.GoogleLink)">Map</button>
+        </div>
     </uib-accordion-group>
 </uib-accordion>
 
 
 
 </div>
+

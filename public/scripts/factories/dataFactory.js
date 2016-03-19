@@ -3,6 +3,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
 // PRIVATE
 var databaseResults = undefined;
 var apiData = undefined;
+var detailedApiData = undefined;
 
 // add new to database
 var saveToDB = function(newVendor){
@@ -20,28 +21,9 @@ var masterSearch = function(searchCriteria) {
     // api search
     var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + searchCriteria + "&callback=JSON_CALLBACK";
     var promise = $http.jsonp(url).then(function(response) {
-       apiData = response.data.results;
+        apiData = response.data.results;
         console.log('Async data response: ', apiData);
-        });
-
-//////// NEW CODE FOR DETAILS: ITERATE THROUGH THE JSON RESULT OBJECT.-------------------------------
-    function searchResultsHandler(searchResults) {
-        for (var key in searchresults) {
-            alert(key);
-            var results = searchresults[key];
-            for (var i = 0; i < results.length; i++) {
-                var result = results[i];
-                for (var key in result) {
-                    //only do an alert on the first search result
-                    if (i == 0) {
-                        alert(result[key]);
-                    }
-                }
-            }
-        }
-    }
-//////// END NEW CODE FOR DETAILS ------------------------------------------------------
-
+    });
 
     // database search
         $http.get('/vendor/' + searchCriteria).then(function (response) {
@@ -51,10 +33,19 @@ var masterSearch = function(searchCriteria) {
         });
 
     return promise;
-
 };
 
 
+//// DETAILED INFORMATION API CALL FROM SEARCH PAGE USING ID.
+var marketDetails = function(id) {
+    console.log('API detailed results for id: ', id);
+    var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id + "&callback=JSON_CALLBACK";
+    var promise = $http.jsonp(url).then(function(response) {
+        detailedApiData = response.data.marketdetails;
+        console.log('Async data response: ', detailedApiData);
+    });
+    return promise;
+};
 
 
 
@@ -68,11 +59,17 @@ var userData = {
     factoryRetrieveData: function(searchCriteria) {
         return masterSearch(searchCriteria);
     },
+    factoryDetailApiData: function(id) {
+        return marketDetails(id);
+    },
     factoryExportApiSearchResults: function() {
         return apiData;
     },
     factoryExportDBSearchResults: function() {
         return databaseResults;
+    },
+    factoryExportDetailApiResults: function() {
+        return detailedApiData;
     }
 };
 
