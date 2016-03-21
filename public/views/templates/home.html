@@ -1,58 +1,48 @@
-<div class="jumbotron">
-    <h1>Farm Stand</h1>
-    <p>Fresh foods are waiting for you.</p>
-</div>
-
-<div class="row">
-    <form>
-
-    <label for="searchBox">What's your zip code? </label>
-    <input type="text" id="searchBox" ng-model="searchBox" placeholder="search" />
-
-    <!--<select -->
-            <!--ng-model="searchBy" ng-options="find as find.label for find in searchTypes track by find.type">-->
-    <!--</select>-->
-    <button class="btn btn-default" ng-click="search()" id="searchButton">Find</button>
-
-    </form>
-</div>
-
+<div id="home-page">
+<section class="section" id="home" style="display: block;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="title">Farm Stand</h1>
+                <h2 class="tag-line">Fresh food is waiting for you</h2>
+                <form class="col-lg-2" id="entryForm">
+                    <label for="searchBox"></label>
+                    <input class="form-control" type="text" id="searchBox" ng-model="searchBox" placeholder="ENTER YOUR ZIP">
+                        <button class="btn btn-default btn-lg" ng-click="search()" id="searchButton">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="results">
     <!--DO:: ADD NG-SHOW RESULTS TITLE-->
-    <h2 ng-show=""></h2>
-
-
+    <!--<h2 ng-show=""></h2>-->
 <uib-accordion close-others="oneAtATime">
+
     <uib-accordion-group heading="{{vendor.vendor_name | ucfirst}}" ng-repeat="vendor in databaseResults" >
-        <p>{{vendor.location | ucfirst }}</p>
-        <p>{{vendor.farm_name | ucfirst }}</p>
-        <p>{{vendor.last_seen | date}}</p>
-
-        <!--DO:: BREAK UP STRING!-->
-        <p>{{vendor.products }}</p>
-
+        <p>{{ vendor.location | ucfirst }} <br>
+            {{ vendor.city | ucfirst }}, {{ vendor.state | ucfirst }}   {{ vendor.zip }}</p>
+        <p><b>Last seen: </b>{{ vendor.last_seen | date }}</p>
+        <p><b>Products: </b>{{ vendor.products | split | ucfirst | underscoreless  }}</p>
+        <p><b>Farm: </b>{{ vendor.farm_name | ucfirst }}</p>
         <p>{{vendor.description }}</p>
-        <button type="button" class="btn btn-default btn-sm" value="{{vendor.zip}}" ng-click="mapView( (vendor.location),(vendor.state),(vendor.zip) )">Map</button>
+        <p><b>Certification: </b>{{ vendor.certification | split | ucfirst | underscoreless  }}</p>
+        <p><b>Accepted payment: </b>{{ vendor.payment  | split | ucfirst | underscoreless }}</p>
+        <a href="http://www.google.com/maps/search/{{vendor.location | uriEncode}}{{vendor.city | uriEncode}}+{{vendor.state | uriEncode}}+{{vendor.zip | uriEncode}}/20z" target="_blank">Map</a>
     </uib-accordion-group>
-</uib-accordion>
 
-    <!--DO:: ADD NG-SHOW RESULTS MARKET TITLE-->
-<uib-accordion close-others="oneAtATime">
-    <uib-accordion-group heading="{{cleanVendor(market.marketname)}}" ng-repeat="market in apiResults" ng-click="getDetails()" >
+    <uib-accordion-group heading="{{cleanVendor(market.marketname) | ucfirst}}" ng-repeat="market in apiResults" ng-click="getDetails()" >
         <div ng-repeat="detail in detailsArray">
             <p>{{detail.Address}}</p>
-            <p>{{detail.Schedule | stripTags }}</p>
-
-            <!--DO:: FILTER FOR ; HERE-->
-            <p>{{detail.Products}}</p>
-
-            <button type="button" class="btn btn-default btn-sm" value="{{detail.GoogleLink}}" ng-click="apiMapView(detail.GoogleLink)">Map</button>
+            <p><b>Schedule: </b>{{detail.Schedule | stripTags }}</p>
+            <p><b>Products: </b>{{detail.Products | semicolon }}</p>
+            <!--<button type="button" class="btn btn-default btn-sm" value="{{detail.GoogleLink}}" ng-click="apiMapView()">Map</button>-->
+            <a href="{{detail.GoogleLink}}" target="_blank">Map</a>
         </div>
     </uib-accordion-group>
+
 </uib-accordion>
-
-
-
 </div>
 
+</div>

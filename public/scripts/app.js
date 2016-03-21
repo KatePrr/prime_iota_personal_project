@@ -12,15 +12,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'LoginController'
         })
         .when('/mapview', {
-            templateUrl: '/views/templates/mapview.html'
+            templateUrl: '/views/templates/mapview.html',
+            controller: 'MapController'
         })
         .when('/addnew', {
             templateUrl: '/views/templates/addnew.html',
             controller: 'AddNewController'
         })
-        //.when('/', {
-        //    templateUrl: '/views/templates/login.html',
-        //    controller: 'LogInController'
+        //.when('/maps', {
+        //    templateUrl: '/views/templates/mapview.html',
+        //    controller: 'searchController'
         //})
         .when('/favorites', {
             templateUrl: '/views/templates/favorites.html'

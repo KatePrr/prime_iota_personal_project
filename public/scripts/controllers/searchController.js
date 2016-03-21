@@ -14,10 +14,22 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
        $scope.dataFactory.factoryRetrieveData(searchCriteria).then(function() {
            $scope.apiResults = $scope.dataFactory.factoryExportApiSearchResults();
            $scope.databaseResults = $scope.dataFactory.factoryExportDBSearchResults();
+            toString($scope.databaseResults);
        });
         // clear searchBox
         $scope.searchBox = null;
     };
+
+
+
+
+
+
+//Direct to mapview.html
+    $scope.seeTheMap = function(){
+        $location.url("/mapview");
+    };
+
 
 
 // MAP VIEW
@@ -37,24 +49,19 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
        $scope.detailsArray = [];
        var id = this.market.id;
        console.log(id);
-        // api query to factory
-        $scope.dataFactory.factoryDetailApiData(id).then(function() {
-            $scope.detailedApiResults = $scope.dataFactory.factoryExportDetailApiResults();
-            //console.log($scope.detailedApiResults);
-            $scope.detailsArray.push($scope.detailedApiResults);
-        });
+           // api query to factory
+           $scope.dataFactory.factoryDetailApiData(id).then(function () {
+               $scope.detailedApiResults = $scope.dataFactory.factoryExportDetailApiResults();
+               //console.log($scope.detailedApiResults);
+               $scope.detailsArray.push($scope.detailedApiResults);
+           });
    };
 
 // Accordion: show 1 at a time
      $scope.oneAtATime = true;
 
-    //$scope.status = {
-    //    isFirstOpen: true,
-    //    isFirstDisabled: false
-    //};
 
-// FILTERS!!!
-// Remove extraneous numbers from accordion heading
+// Filter: remove extraneous numbers from accordion heading
     $scope.cleanVendor = function(string){
         for(var i = 0; i < string.length; i++){
             if(string[i] == ' ') {
@@ -63,19 +70,12 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
         }
     };
 
-
-
-
-
-
-
-
-
 }]);
 
+//uriEncode:
+//https://www.google.com/maps?q=corner+of+Peach+&+Montana+Bozeman+Montana+S59715
 
-
-
+//https://www.google.com/#q=corner+of+peach+%26+aspen+st+Bozeman+Montana+59715
 
 //      http://maps.google.com/?q=45.67778%2C%20-111.0404%20(%22Bozeman+Winter+Farmers'+Market%22)
 //      http://maps.google.com/?q=(corner+of+peach+and+montana)Bozeman+Montana+59715

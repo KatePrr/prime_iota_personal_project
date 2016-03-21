@@ -125,7 +125,7 @@ myApp.controller('AddNewController', ['$scope', 'DataFactory', function($scope, 
     $scope.alerts = [];
 
     var newSuccess = function () {
-       $scope.alerts.push({msg: 'Your listing has been submitted and will be added shortly. Thank you!'});
+       $scope.alerts.push({msg: 'Your listing will be added shortly. Thank you!'});
     };
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);

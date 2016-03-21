@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Farm Finder</title>
+    <title>Farm Stand Finder</title>
+
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
     <!--Angular UI Bootstrap-->
@@ -10,31 +12,39 @@
     <link href="/vendors/ui-bootstrap-csp.css" />
     <!--Angular Filter-->
     <script src="/vendors/angular-filter.min.js"></script>
-    <!--test-->
     <script src="/vendors/ui-bootstrap-tpls.js"></script>
     <script src="/vendors/angular-touch.min.js"></script>
-    <!--checklist model:-->
+    <!--Angular Checklist-->
     <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.checklist-model/0.1.3/checklist-model.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/factories/dataFactory.js"></script>
-    <script type="text/javascript" src="/scripts/factories/FormFactory.js"></script>
+    <!--<script type="text/javascript" src="/scripts/factories/FormFactory.js"></script>-->
     <script type="text/javascript" src="/scripts/controllers/loginController.js"></script>
     <script type="text/javascript" src="/scripts/controllers/addNewController.js"></script>
     <script type="text/javascript" src="/scripts/controllers/searchController.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/mapController.js"></script>
+    <script type="text/javascript" src="/scripts/filters/myFilters.js"></script>
 
-<!--GoogeMaps api-->
-    <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
-    <!--<script type="text/javascript" src="/scripts/controllers/taskController.js"></script>-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Karla:400,700' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="/vendors/bootstrap.min.css" />
     <link rel="stylesheet" href="/styles/stylesheet.css" />
-
-    <meta name="google-signin-client_id" content="1012493138245-t0pckh7gt11l3rva0iagcog8r0ig362g.apps.googleusercontent.com">
+    <!--<meta name="google-signin-client_id" content="1012493138245-t0pckh7gt11l3rva0iagcog8r0ig362g.apps.googleusercontent.com">-->
 
 </head>
 
-<body ng-app="myApp">
-<header ng-include="'/templates/header.html'"></header>
-<nav ng-include="'/templates/nav.html'"></nav>
-<main ng-view></main>
+
+<body ng-app="myApp" class="theme-invert">
+    <div class="wrapper">
+        <header ng-include="'/templates/header.html'"></header>
+        <nav ng-include="'/templates/nav.html'"></nav>
+        <main ng-view></main>
+    </div>
 </body>
+
+
 </html>

@@ -1,13 +1,15 @@
 <div class="row">
-    <h2>Add New</h2>
+    <div class="col-md-10 col-lg-10 text-center">
+        <h2>Share the veg.</h2>
+    </div>
 </div>
 
 <div class="row">
-    <form name="newStand">
+    <form class="form-group" name="newStand" id="newStand">
         <div>
 
             <label for="vendor_name">Vendor Name: </label>
-            <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name"/>
+            <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name" required />
 
             <label for="farm_name">Farm Name: </label>
             <input type="text" placeholder="Farm..." ng-model="farm_name" id="farm_name" />
@@ -40,24 +42,24 @@
             <input type="text" placeholder="About..." ng-model="description" id="description" />
 
             <!--PRODUCT OPTIONS-->
-            <div id="productList">
+            <div class="checkbox" id="productList">
                 <h4>Items</h4>
-                <label ng-repeat="item in produceTypes">
+                <label class="checkbox" ng-repeat="item in produceTypes">
                     <input type="checkbox" checklist-model="selectedProducts.type" checklist-value="item.id" />
                     {{item.label}}
                 </label>
                 <!--TESTING-->
-                {{selectedProducts.type}}
+                <!--{{selectedProducts.type}}-->
             </div>
             <!--PAYMENT CHECKBOXES-->
-            <div id="paymentChecklist">
+            <div class="checkbox" id="paymentChecklist">
                 <h4>Payment Options</h4>
-                <label ng-repeat="method in paymentTypes">
+                <label class="checkbox" ng-repeat="method in paymentTypes">
                     <input type="checkbox" checklist-model="selectedPayment.type" checklist-value="method.payment" />
                     {{method.label}}
                 </label>
                 <!--FOR TESTING:-->
-                {{selectedPayment.type}}
+                <!--{{selectedPayment.type}}-->
             </div>
         </div>
 
