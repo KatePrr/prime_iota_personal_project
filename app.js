@@ -85,6 +85,7 @@ app.get('/vendor/:searchCriteria', function(req, res) {
 
 // Serve back static files
 app.use(express.static('public'));
+app.use(express.static('public/views/templates'));
 app.use(express.static('public/views'));
 app.use(express.static('public/scripts'));
 app.use(express.static('public/styles'));

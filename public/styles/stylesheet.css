@@ -31,7 +31,7 @@ nav {
                     rgba(0,0,0, 0.75),
                     rgba(0,0,0, 0.1)
             ),
-            url(/img/picnic.jpeg) center center no-repeat fixed;
+            url(../img/picnic.jpeg) center center no-repeat fixed;
     background-size: cover;
     color: #ffffff;
 }
