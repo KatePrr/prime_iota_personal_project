@@ -1,9 +1,8 @@
 myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory) {
 // TESTING
     console.log('SearchController');
-// bring in datafactory
     $scope.dataFactory = DataFactory;
-    //$scope.detailsArray = [];
+    var selectedID = undefined;
 
 //button from home.html call function search():
     $scope.search = function() {
@@ -19,10 +18,6 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
         // clear searchBox
         $scope.searchBox = null;
     };
-
-
-
-
 
 
 //Direct to mapview.html
@@ -42,20 +37,30 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
 
     };
 
-
 // UI.BOOTSTRAP ACCORDION
    $scope.getDetails = function() {
        //console.log(this.market.id);
        $scope.detailsArray = [];
        var id = this.market.id;
        console.log(id);
-           // api query to factory
-           $scope.dataFactory.factoryDetailApiData(id).then(function () {
-               $scope.detailedApiResults = $scope.dataFactory.factoryExportDetailApiResults();
-               //console.log($scope.detailedApiResults);
-               $scope.detailsArray.push($scope.detailedApiResults);
-           });
-   };
+
+     if(parseInt(id) !== selectedID) {
+       // api query to factory
+       $scope.dataFactory.factoryDetailApiData(id).then(function () {
+         $scope.detailedApiResults = $scope.dataFactory.factoryExportDetailApiResults();
+         //console.log($scope.detailedApiResults);
+         $scope.detailsArray.push($scope.detailedApiResults);
+         selectedID = parseInt(id);
+         console.log('id ', id);
+       });
+       //selectedID = parseInt(id);
+       console.log('selected ID:::::: ',selectedID)
+
+     }else{
+       selectedID = undefined;
+     }
+     };
+
 
 // Accordion: show 1 at a time
      $scope.oneAtATime = true;
@@ -71,13 +76,3 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataFactory', function
     };
 
 }]);
-
-//uriEncode:
-//https://www.google.com/maps?q=corner+of+Peach+&+Montana+Bozeman+Montana+S59715
-
-//https://www.google.com/#q=corner+of+peach+%26+aspen+st+Bozeman+Montana+59715
-
-//      http://maps.google.com/?q=45.67778%2C%20-111.0404%20(%22Bozeman+Winter+Farmers'+Market%22)
-//      http://maps.google.com/?q=(corner+of+peach+and+montana)Bozeman+Montana+59715
-
-//    https://www.google.com/maps/place/E+Peach+St+%26+N+Montana+Ave,+Bozeman,+Mt+59715/@45.6855625,-111.0353249,17z/data=!3m1!4b1!4m2!3m1!1s0x534544436d3cb5a9:0xd5c0174692da4759

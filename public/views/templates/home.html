@@ -32,7 +32,7 @@
         <a href="http://www.google.com/maps/search/{{vendor.location | uriEncode}}{{vendor.city | uriEncode}}+{{vendor.state | uriEncode}}+{{vendor.zip | uriEncode}}/20z" target="_blank">Map</a>
     </uib-accordion-group>
 
-    <uib-accordion-group heading="{{cleanVendor(market.marketname) | ucfirst}}" ng-repeat="market in apiResults" ng-click="getDetails()" >
+    <uib-accordion-group heading="{{cleanVendor(market.marketname) | ucfirst}}" ng-repeat="market in apiResults" ng-click="getDetails()">
         <div ng-repeat="detail in detailsArray">
             <p>{{detail.Address}}</p>
             <p><b>Schedule: </b>{{detail.Schedule | stripTags }}</p>

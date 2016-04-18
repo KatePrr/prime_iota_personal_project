@@ -25,6 +25,10 @@ nav {
     font-weight: 400;
     color: #000000;
 }
+/*.navbar li:hover {*/
+        /*border-bottom: darkred;*/
+/*}*/
+
 #home {
     background:
             linear-gradient(
@@ -39,7 +43,6 @@ nav {
     padding-top: 75px;
     z-index: 1;
     min-height: 100vh;
-    /*min-height: 420px;*/
     width: 100%;
     overflow: auto;
     height: 100%;

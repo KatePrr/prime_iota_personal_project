@@ -1,5 +1,4 @@
 myApp.factory('DataFactory', ['$http', function($http) {
-
 // PRIVATE
 var databaseResults = undefined;
 var apiData = undefined;

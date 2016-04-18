@@ -19,10 +19,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/addnew.html',
             controller: 'AddNewController'
         })
-        //.when('/maps', {
-        //    templateUrl: '/views/templates/mapview.html',
-        //    controller: 'searchController'
-        //})
         .when('/favorites', {
             templateUrl: '/views/templates/favorites.html'
         })

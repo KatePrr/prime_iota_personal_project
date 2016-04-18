@@ -7,6 +7,7 @@
 <div class="row">
     <form class="form-group" name="newStand" id="newStand">
         <div>
+            <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
 
             <label for="vendor_name">Vendor Name: </label>
             <input type="text" placeholder="Vendor..." ng-model="vendor_name" id="vendor_name" required />
@@ -67,6 +68,5 @@
         <button class="btn btn-default" ng-click="reset()" id="cancel-button" >Cancel</button>
     </form>
 
-    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
 
 </div>
