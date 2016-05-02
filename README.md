@@ -2,11 +2,10 @@ Farm Stand Finder
 The Client 
 March 7, 2016 | Version 1.1
 Document Objectives
-The purpose of this document is to provide detailed documentation to Beatrice Bartholomew ("The Client") that 
+The purpose of this document is to provide detailed documentation to "The Client" that 
 clearly defines the work that Prime Student Kati Lueth ("The Company") will perform and the deliverables you will
- receive within the scope of this project. By accepting this document you acknowledge your understanding and agreement to this scope of work. Any requirement which falls outside the specifications in this document will be considered "Out of Scope" and may require reprioritization or removal of other features to implement.
+ receive within the scope of this project. 
 
-This document takes precedence over any other documentation provided regarding scope of work.
 Scope of Work Feature Details
 Farm Stand Finder will be a full stack web application for use in browsers as well as mobile friendly. The purpose 
 of this application is to provide The Client an application that will compile smaller, local food distribution market 
@@ -144,14 +143,6 @@ GitHub
 Heroku
 USDA National Farmers Market Directory
 Google Maps API
-Source Code
-All source code produced by The Company for this project will be provided to The Client via… The Client is free to 
-work with other service providers on future modifications to the project utilizing the provided source code unless 
-otherwise stipulated.
-Approvals
-Client Signature _____________________________________
-
-Client Name (printed) _________________________________
 
 If approval of this Scope of Work is received by The Company no later than March 9, 2016 at 3pm, development shall 
 begin by March 10, 2016.
